@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Fallback CSS in case style.css doesn't load */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 i {
+            color: #667eea;
+            margin-right: 10px;
+        }
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        #cityInput {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        #searchBtn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #weatherCard {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+        .temp {
+            font-size: 48px;
+            font-weight: 300;
+            color: #333;
+            margin: 15px 0;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #c62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-cloud-sun"></i> Weather App</h1>
+        
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter city name (e.g., London, Paris)">
+            <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+        </div>
+        
+        <div id="weatherCard" class="weather-card hidden">
+            <h2 id="cityName">--</h2>
+            <div class="temp"><span id="temperature">--</span>°C</div>
+            <div class="weather-info">
+                <img id="weatherIcon" src="" alt="Weather Icon" width="100" height="100">
+                <p id="weatherDesc">--</p>
+            </div>
+            <div class="details">
+                <p>Wind: <span id="windSpeed">--</span> km/h</p>
+                <p>Humidity: <span id="humidity">--</span>%</p>
+                <p>Feels like: <span id="feelsLike">--</span>°C</p>
+            </div>
+        </div>
+        
+        <div id="error" class="error hidden">
+            <p id="errorText">Error message</p>
+        </div>
+        
+        <div style="margin-top: 30px; color: #666; font-size: 14px; text-align: center;">
+            <p>Get API key from <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap</a></p>
+            <p>Add to <code>config.js</code> file in project folder</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
