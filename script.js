@@ -3,7 +3,7 @@
 // ============================================
 
 // Global variables
-let API_KEY = '';
+const API_KEY = '25349dc6c010bd52dedd10819949e94d'; // API Key
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 // DOM Elements
@@ -22,38 +22,7 @@ const windSpeed = document.getElementById('windSpeed');
 const humidity = document.getElementById('humidity');
 const feelsLike = document.getElementById('feelsLike');
 
-// ============================================
-// 1. LOAD API KEY FROM CONFIG.JS
-// ============================================
-async function loadAPIKey() {
-    console.log('🔍 Loading API key...');
-    
-    try {
-        const module = await import('./config.js');
-        API_KEY = module.default;
-        
-        if (!API_KEY || API_KEY === 'YOUR_API_KEY_HERE' || API_KEY.length < 20) {
-            console.error('❌ Invalid API key in config.js');
-            showError('Please add your OpenWeatherMap API key to config.js');
-            return false;
-        }
-        
-        console.log('✅ API Key loaded successfully');
-        return true;
-        
-    } catch (error) {
-        console.error('❌ Error loading config.js:', error);
-        showError(`
-            <strong>Setup Required:</strong><br>
-            1. Create <code>config.js</code> file in project folder<br>
-            2. Add your OpenWeatherMap API key:<br>
-            &nbsp;&nbsp;<code>const API_KEY = 'your_key_here';</code><br>
-            &nbsp;&nbsp;<code>export default API_KEY;</code><br>
-            3. Get free key from: <a href="https://openweathermap.org/api" target="_blank">openweathermap.org/api</a>
-        `);
-        return false;
-    }
-}
+// API Key is embedded above - no need to load separately
 
 // ============================================
 // 2. WEATHER FUNCTIONS
@@ -171,21 +140,9 @@ cityInput.addEventListener('keypress', (e) => {
 // ============================================
 // 5. INITIALIZE APP
 // ============================================
-async function initApp() {
+function initApp() {
     console.log('🚀 Initializing Weather App...');
-    
-    // Load API key
-    const keyLoaded = await loadAPIKey();
-    
-    if (keyLoaded) {
-        console.log('✅ Weather App is ready!');
-        
-        // Auto-search for London on startup (optional)
-        // getWeather('London');
-        
-    } else {
-        console.log('⚠️ Waiting for API key setup...');
-    }
+    console.log('✅ Weather App is ready!');
 }
 
 // Start the app
