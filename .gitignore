@@ -14,6 +14,10 @@ build/
 .env.local
 .env.*.local
 
+# API Keys and secrets
+api-key.js
+secrets.js
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -34,4 +38,4 @@ coverage/
 
 # Misc
 *.tmp
-*.temp
+*.temp 
